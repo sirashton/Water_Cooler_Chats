@@ -1,0 +1,70 @@
+###########  Forex Pattern Predictor  ############
+
+----------PREDICTIONS----------
+
+- Load previous Data
+	- Various types of data, not always buy sell price
+	- Investigate trend lines used
+
+- Look at previous (currentDataLength) bits of data
+
+- Look at all previous data and compare pattern
+	- Various methods for deciding how close
+	- Option Menu for deciding how close
+
+- For all the similar patterns find the price (predictionDistance) into the future
+
+- Calculate average future price
+	- More recent data could be heabily weighted? (Weighting Options)
+	- Ignore top 10% of past finish prices? Too Flukey?
+
+- Calculate percentage change of
+	- Rise
+	- Fall
+	- Not much change
+
+- Decide if a trade should be actioned
+	- What % chance is acceptable?
+	- How many similar patterns should be found before reliable?
+	- Actual opening price will be delayed by (decisionTime)
+	- Decide buy or sell
+		- How long should the purchase be held for?
+		- Whilst being held, find new prediction for (predictionDistance) into future
+		- Close the trade when appropiate
+	- Log open and close price
+
+---------BACKTESTING-------------
+
+- Collect predictions for above code and compare to real outcome
+- For all suggested Trades calculate Profit / loss
+
+- Simulate running for a (backtestPeriod)
+
+- Calculate profit for given period if trusted completely
+
+--------LEARNING----------
+
+- Possible Variables:
+	- Method of comparing patterns
+	- complexity of above method changes (decisionTime)
+	- backtestPeriod
+	- How many similar patterns need to be found to count as reliable?
+	- Weighting Options for predictions
+		- How recent? How severe?
+		- Ignore how many out liers?
+		- How conservative? Only ignore profitable outliers?
+
+- Evolution and inheritance?
+	- Variable size of off spring?
+	- Select two best
+	- Breed and generate random variations on each variable
+
+- Neural Networks?
+
+- Exponetial Growth Theory?
+	- Change variable untill only grows profit linearly
+	- Cycle through all variables
+		- Then carry on till no improved profit???
+		- cycle through again
+	- Start cycle at different point in different learning cycles
+

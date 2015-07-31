@@ -10,7 +10,7 @@
 
 - Look at all previous data and compare pattern
 	- Various methods for deciding how close
-		- Method 1: Allow for 0% change in data
+		- ERROR - Method 1: Allow for 0% change in data
 	- Option Menu for deciding how close
 
 - For all the similar patterns find the price (predictionDistance) into the future
@@ -33,6 +33,14 @@
 		- Whilst being held, find new prediction for (predictionDistance) into future
 		- Close the trade when appropiate
 	- Log open and close price
+
+- Graphing and GUI
+	- Show graph of current pattern
+	- Show found similar graphs
+	- show result of previous graphs
+	- number of graphs compared to
+	- Percentage above/below
+
 
 ---------BACKTESTING-------------
 

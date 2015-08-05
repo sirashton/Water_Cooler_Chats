@@ -10,7 +10,6 @@
 
 - Look at all previous data and compare pattern
 	- Various methods for deciding how close
-		- ERROR - Method 1: Allow for 0% change in data
 	- Option Menu for deciding how close
 
 - For all the similar patterns find the price (predictionDistance) into the future
@@ -24,15 +23,34 @@
 	- Fall
 	- Not much change
 
-- Decide if a trade should be actioned
+- Output format:
+	[patterns]
+	patterns = list of patterns where individual = [pattern start index, correlation score, future rise/fall]
+
+---------Trade Simulation-------
+
+	-variables:
+		- Probability needed
+		- number of similar patterns needed
+		- size of predicted change needed
+		- decision time
+		- trades open at once?
+		- top % to ignore
+
+- Decide if a trade should be actioned (def decisionMaker)
 	- What % chance is acceptable?
 	- How many similar patterns should be found before reliable?
+	- ignore top 10%ish
 	- Actual opening price will be delayed by (decisionTime)
 	- Decide buy or sell
 		- How long should the purchase be held for?
 		- Whilst being held, find new prediction for (predictionDistance) into future
 		- Close the trade when appropiate
 	- Log open and close price
+	- output:
+		- buy/sell/hold
+
+-----Graphing and GUI-------
 
 - Graphing and GUI
 	- Show graph of current pattern
@@ -43,6 +61,24 @@
 
 
 ---------BACKTESTING-------------
+
+- def Trade Simulator:
+	- if decicion is buy or sell:
+		- record opening price
+		while hold = true
+			- hold for one time unit
+			- run decision maker again on current point
+				- decide if hold or sell/buy
+		record close price
+	- output:
+		buyAndSells = [ [open price, close price, buy/sell] , [...] , [...] , ......]
+
+- def profitCalculator:
+	count total no. of profits / loss
+	calc total profit
+
+- def backTester:
+	
 
 - Collect predictions for above code and compare to real outcome
 - For all suggested Trades calculate Profit / loss

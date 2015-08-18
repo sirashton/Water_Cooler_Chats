@@ -9,7 +9,9 @@ from functools import reduce
 
 historicData = makeHistoricData()
 pastPatterns = []
-currentPattern = historicData[-300:-285]
+startPosition = -1000
+length = 15
+currentPattern = historicData[startPosition : startPosition + length]
 print('Current Pattern : ' + str(currentPattern))
 historicData = historicData
 futureDistance = 10
@@ -41,6 +43,10 @@ def graphSimilar():
         
         ratio = float(currentPattern[-1] / i[0][-(1 + futureDistance)])
         normalisedFuture.append(futurePrices[count] * ratio)
+        if (futurePrices[count] * ratio) > currentPattern[-1]:
+            pyplot.plot(25, futurePrices[count] * ratio , color = 'green')
+        else:
+            pyplot.plot(25, futurePrices[count] * ratio , color = 'red')
         #print(normalisedFuture)
         xList.append(25)
         for x in range(len(currentPattern) + futureDistance):
@@ -57,8 +63,8 @@ def graphSimilar():
     print(int(len(yList)))
     print(xList)
     print(int(len(xList)))
-    pyplot.scatter(xList, yList)
-    pyplot.scatter(25,historicData[-275],color = 'red')
+    #pyplot.scatter(xList, yList)
+    pyplot.scatter(25,(historicData[startPosition + length + futureDistance])*ratio,color = 'blue')
     pyplot.show()
 
 pastPatterns = generatePastPatterns(len(currentPattern), historicData)

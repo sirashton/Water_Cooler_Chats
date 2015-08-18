@@ -1,0 +1,56 @@
+# -*- coding: cp1252 -*-
+
+
+def mileconvert():
+    miles = raw_input()
+    yards = miles * 1760
+
+def tariff():
+    print 'When are you travelling?'
+    time = raw_input() # would later be done by calender option?
+    time = time.lower() # OR POTENCH USE THE DATETIME??? <<<---
+    
+    if time == 'post 12' or int(time) == 3:
+        print 'tariff 3'
+        m = 1.5
+        return m
+    if time == 'standard' or int(time) == 1:
+        print 'tariff 1'
+        m=1
+        return m
+    if time == 'sunday' or int(time) == 2:
+        print 'tariff 2'
+        m = 1.2
+        return m
+    if time == 'special' or int(time) == 4:
+        print 'tariff 4'
+        m=2
+        return m
+    
+def pricefind(): # price will come out in pence
+    print 'How far are you going? (in miles)'
+    distance = raw_input()  
+    d = distance          #conversion to yards done here
+    d = float(d)
+    d = d *1760
+    d = d-880
+    
+    if d <=0: #this is to prevent a minus error
+        return 270 # this is the 'hailing fare'
+    
+    d = float(d)/76.52
+    pencetoadd = d*10
+    return pencetoadd
+
+def taxifare():
+    m = tariff()
+    price = pricefind()
+    
+    if price == 270:
+        return 'taxi fare should cost 2.70'
+
+    finalprice = m * price
+    fp = finalprice + 270
+    fp = int(fp)
+    fp = float(fp)/100
+    print 'taxi fare should cost', fp

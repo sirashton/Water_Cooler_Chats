@@ -5,18 +5,20 @@ from shapeComparison import percentageChange
 from dataProcessing import makeHistoricData
 from matplotlib import pyplot
 from functools import reduce
+from graphingAndGUI import graphEverythingBacktesting
+from findSimilar import findSimilar
 
 
 historicData = makeHistoricData()
-pastPatterns = []
-startPosition = -1000
+#pastPatterns = []
+currentPatternIndex = -1000
 length = 15
-currentPattern = historicData[startPosition : startPosition + length]
+currentPattern = historicData[currentPatternIndex : currentPatternIndex + length]
 print('Current Pattern : ' + str(currentPattern))
 historicData = historicData
 futureDistance = 10
 
-def generatePastPatterns(patternLength, historicData):
+'''def generatePastPatterns(patternLength, historicData):
     currentPoint = 0
     endPoint = len(historicData) - patternLength - futureDistance
     pastPatterns = []
@@ -32,9 +34,9 @@ def generatePastPatterns(patternLength, historicData):
         pastPatterns.append([patternToAdd,currentPoint])
         #print('Pattern to Add :' + str(patternToAdd))
         currentPoint += 1
-    return pastPatterns
+    return pastPatterns'''
 
-def graphSimilar():
+'''def graphSimilar():
     xList = []
     count = 0
     normalisedFuture = []
@@ -54,9 +56,9 @@ def graphSimilar():
         pyplot.plot(normalised)
         count += 1
     pyplot.plot(currentPattern,linewidth = 5.0)
-    '''for x in range(len(currentPattern)):
+    ''''''for x in range(len(currentPattern)):
             normalisedFuture.append(futurePrices[x] * ratio)
-            xList.append(17)'''
+            xList.append(17)''''''
     #yList = futureResults(similarPatterns)
     yList = normalisedFuture
     print(yList)
@@ -65,17 +67,18 @@ def graphSimilar():
     print(int(len(xList)))
     #pyplot.scatter(xList, yList)
     pyplot.scatter(25,(historicData[startPosition + length + futureDistance])*ratio,color = 'blue')
-    pyplot.show()
+    pyplot.show()'''
 
-pastPatterns = generatePastPatterns(len(currentPattern), historicData)
+'''pastPatterns = generatePastPatterns(len(currentPattern), historicData)
 similarPatterns = []
 from shapeComparison import comparePattern
 for i in pastPatterns:
     #print('Past pattern : '+str(i))
     if comparePattern(currentPattern,i[0],1) > 35:
-        similarPatterns.append(i)
-futurePrices = []
-def futureResults(similarPatterns):
+        similarPatterns.append(i)'''
+
+#futurePrices = []
+'''def futureResults(similarPatterns):
     futureResults = []
     fururePrices = []
     for i in similarPatterns:
@@ -90,4 +93,7 @@ print('Done')
 
 print(futureResults(similarPatterns))
 print(reduce(lambda x, y: x + y, futureResults(similarPatterns)) / float(len(futureResults(similarPatterns))))
-graphSimilar()
+graphSimilar()'''
+
+similarPatternsIndex = findSimilar(currentPattern, historicData, futureDistance, 50, 1)
+graphEverythingBacktesting(length, currentPatternIndex, similarPatternsIndex, historicData, futureDistance)

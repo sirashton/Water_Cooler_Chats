@@ -7,6 +7,9 @@ from matplotlib import pyplot
 from functools import reduce
 from graphingAndGUI import graphEverythingBacktesting
 from findSimilar import findSimilar
+import settings
+
+settings.init()
 
 
 historicData = makeHistoricData()
@@ -96,4 +99,4 @@ print(reduce(lambda x, y: x + y, futureResults(similarPatterns)) / float(len(fut
 graphSimilar()'''
 
 similarPatternsIndex = findSimilar(currentPattern, historicData, futureDistance, 50, 1)
-graphEverythingBacktesting(length, currentPatternIndex, similarPatternsIndex, historicData, futureDistance)
+graphEverythingBacktesting(length, currentPatternIndex, similarPatternsIndex, historicData)

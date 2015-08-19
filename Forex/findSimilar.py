@@ -1,4 +1,5 @@
 from shapeComparison import comparePattern
+import settings
 
 def findSimilar(currentPattern, pastData, predictionDistance, reqCloseScore, methodNumber):
                                                 #takes a pattern and checks past data,
@@ -16,6 +17,5 @@ def findSimilar(currentPattern, pastData, predictionDistance, reqCloseScore, met
         if closeScore > reqCloseScore:
             if closeScore != 100:
                 similarPatternsIndex.append( [startPoint , closeScore] )
-            
     return similarPatternsIndex
 

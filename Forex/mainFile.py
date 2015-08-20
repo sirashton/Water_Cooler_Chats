@@ -1,5 +1,8 @@
+import settings
+#from settings import globalSettings
 import csv
 import matplotlib
+import time
 from shapeComparison import comparePattern
 from shapeComparison import percentageChange
 from dataProcessing import makeHistoricData
@@ -7,19 +10,21 @@ from matplotlib import pyplot
 from functools import reduce
 from graphingAndGUI import graphEverythingBacktesting
 from findSimilar import findSimilar
-import settings
+from decision import decide
+from profitLoss import profitLoss
+from backtester import backtester
+
+
+startTime = time.time()
 
 settings.init()
 
-
-historicData = makeHistoricData()
 #pastPatterns = []
-currentPatternIndex = -1000
-length = 15
-currentPattern = historicData[currentPatternIndex : currentPatternIndex + length]
-print('Current Pattern : ' + str(currentPattern))
-historicData = historicData
-futureDistance = 10
+#currentPatternIndex = -1000
+#length = 15
+#currentPattern = settings.historicData[currentPatternIndex : currentPatternIndex + length]
+#print('Current Pattern : ' + str(currentPattern))
+#historicData = historicData
 
 '''def generatePastPatterns(patternLength, historicData):
     currentPoint = 0
@@ -98,5 +103,17 @@ print(futureResults(similarPatterns))
 print(reduce(lambda x, y: x + y, futureResults(similarPatterns)) / float(len(futureResults(similarPatterns))))
 graphSimilar()'''
 
-similarPatternsIndex = findSimilar(currentPattern, historicData, futureDistance, 50, 1)
-graphEverythingBacktesting(length, currentPatternIndex, similarPatternsIndex, historicData)
+#currentPatternIndex = settings.currentPatternIndex
+
+'''def createCurrentPattern():
+
+    historicData = settings.historicData
+    patternLength = settings.patternLength
+    
+    global currentPattern
+    currentPattern = historicData[a : a + patternLength]'''
+
+backtester()
+
+endtime = time.time()
+print(endtime - startTime)

@@ -1,11 +1,17 @@
 from shapeComparison import comparePattern
 import settings
 
-def findSimilar(currentPattern, pastData, predictionDistance, reqCloseScore, methodNumber):
+def findSimilar(currentPatternIndex):
                                                 #takes a pattern and checks past data,
                                                 #returns list of previous pattern start points in past data and 'pattern closeness score'
-    patternLength = len(currentPattern)
+    reqCloseScore = settings.reqCloseScore
+    methodNumber = settings.closeMethodNumber
+    predictionDistance = settings.futureDistance
+    historicData = settings.historicData
     similarPatternsIndex = []
+    pastData = settings.historicData
+    patternLength = settings.patternLength
+    currentPattern = historicData[currentPatternIndex : currentPatternIndex + patternLength]
     
     for startPoint in range( 0 , len(pastData) - predictionDistance - patternLength):
 

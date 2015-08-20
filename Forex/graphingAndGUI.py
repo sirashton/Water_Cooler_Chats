@@ -1,8 +1,10 @@
 import matplotlib
 from matplotlib import pyplot
 import settings
-def graphEverythingBacktesting(patternLength, currentPatternIndex, similarPatternsIndex, historicData):
+def graphEverythingBacktesting(similarPatternsIndex, currentPatternIndex):
+    patternLength = settings.patternLength
     futureDistance = settings.futureDistance
+    historicData = settings.historicData
     currentPattern = historicData[currentPatternIndex : currentPatternIndex + patternLength + futureDistance]    #plot similar graphs (opacity based on closeScore?)
 
     #plot future prices (red green if above/below)

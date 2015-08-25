@@ -10,14 +10,18 @@ from matplotlib import pyplot
 from functools import reduce
 from graphingAndGUI import graphEverythingBacktesting
 from findSimilar import findSimilar
+from findSimilar import findSimilarLive
 from decision import decide
+from decision import decideLive
 from profitLoss import profitLoss
 from backtester import backtester
+from backtester import liveTester
+
 
 
 startTime = time.time()
 
-settings.init()
+settings.init('settings/1.1.txt')
 
 #pastPatterns = []
 #currentPatternIndex = -1000
@@ -85,35 +89,16 @@ for i in pastPatterns:
     if comparePattern(currentPattern,i[0],1) > 35:
         similarPatterns.append(i)'''
 
-#futurePrices = []
-'''def futureResults(similarPatterns):
-    futureResults = []
-    fururePrices = []
-    for i in similarPatterns:
-        futurePrice = historicData[i[1] + len(currentPattern) + futureDistance]
-        futurePrices.append(futurePrice)
-        futurePercentage = percentageChange(historicData[i[1] + len(currentPattern)],futurePrice)
-        futureResults.append(futurePercentage)
-    return futureResults
-print('Found ' +str(len(similarPatterns)) + ' similar patterns')
-
-print('Done')
-
-print(futureResults(similarPatterns))
-print(reduce(lambda x, y: x + y, futureResults(similarPatterns)) / float(len(futureResults(similarPatterns))))
-graphSimilar()'''
 
 #currentPatternIndex = settings.currentPatternIndex
 
-'''def createCurrentPattern():
-
-    historicData = settings.historicData
-    patternLength = settings.patternLength
-    
-    global currentPattern
-    currentPattern = historicData[a : a + patternLength]'''
-
 backtester()
+'''pattern = [0.72724, 0.72790, 0.72991, 0.73194, 0.73058, 0.73333, 0.73373, 0.73222, 0.73185, 0.73152, 0.73152, 0.73230, 0.73427, 0.73477, 0.73609, 0.73480, 0.73600, 0.73515, 0.73528, 0.73493, 0.73236, 0.73604, 0.73527, 0.73986, 0.73231, 0.73082, 0.73110, 0.73083, 0.73007, 0.73291, 0.73336, 0.73027, 0.73023, 0.73040]
+pattern = pattern[0:10]
+pattern.reverse()
+print(len(pattern))'''
+
+#liveTester(pattern)
 
 endtime = time.time()
 print(endtime - startTime)
